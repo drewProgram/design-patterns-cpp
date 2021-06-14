@@ -139,7 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ConcreteProductA.cpp" />
+    <ClCompile Include="src\ConcreteProductB.cpp" />
+    <ClCompile Include="src\Creator.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ConcreteCreatorA.h" />
+    <ClInclude Include="src\ConcreteCreatorB.h" />
+    <ClInclude Include="src\ConcreteProductA.h" />
+    <ClInclude Include="src\ConcreteProductB.h" />
+    <ClInclude Include="src\Creator.h" />
+    <ClInclude Include="src\Product.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
