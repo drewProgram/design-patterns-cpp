@@ -32,3 +32,33 @@ It's a creational design pattern that lets you produce families of related objec
 * You avoid tight coupling between concrete products and client code.
 * *Single Responsibility Principle*. You can extract the product creation code into the place in the program, making the code easier to support.
 * *Open/Closed Principle*. You can introduce new variants of products into the program without breaking existing client code.
+
+## Builder
+### Purpose
+It's a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
+
+### Applicability
+#### Use the Builder pattern to get rid of a "telescopic constructor".
+Say you have a constructor with ten optional parameters. Calling such a beast is very inconvenient; therefore, you overload the constructor and create several shorter versions with fewer parameters. These constructors still refer to the main one, passing some default values into any omitted parameters.
+```cs
+class Pizza
+{
+    // Creating such a monster is only possible in languages that
+    // supports method overloading, such as C# or Java.
+    Pizza(int size) {...}
+    Pizza(int size, bool cheese) {...}
+    Pizza(int size, bool cheese, bool pepperoni) {...}
+}
+// ...
+```
+The Builder pattern lets you build objects step by step, using only those steps that you really need. After implementing the pattern, you don't have to cram dozens of parameters into your constructors anymore.
+
+#### Use the Builder to construct Composite trees or ohter complex objects.
+The Builder pattern lets you construct products step-by-step. You could defer execution of some steps without breaking the final product. You can even call steps recursively, which comes in handy when you need to build an object tree.
+
+A builder doesn't expose the unfinished product while running construction steps. This prevents the client code from fetching an incomplete result.
+
+### Why use this?
+* You can construct objects step-bystep, defer construction steps or run steps recursively.
+* You can reuse the same construction code when building various representations of products.
+* *Single Responsibility Principle*. You can isolate complex construction code from the business logic of the product.
