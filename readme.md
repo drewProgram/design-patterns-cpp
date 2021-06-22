@@ -8,11 +8,16 @@ The Abstract Factory creates families of objects. E.g.: Related products: Chair,
 
 ## Factory
 ### Purpose
-It's a creational design pattern which provides an interface for creating objects in a superclass, but allows sublasses to alter the type of objects that will be created.
+It's a creational design pattern which provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
 ### Applicability
-* Use the Factory Method when you don't know beforehand the exact types and dependencies of the objects your code should work with.
-* The Factory Method separates product construction code from the code that actually uses the product. Therefore it's easier to extend the product construction code independently from the rest of the code. For example, to add a new product type to the app, you'll only need to create a new creator subclass and override the factory method in it.
+#### Use the Factory Method when you don't know beforehand the exact types and dependencies of the objects your code should work with.
+The Factory Method separates product construction code from the code that actually uses the product. Therefore it's easier to extend the product construction code independently from the rest of the code. For example, to add a new product type to the app, you'll only need to create a new creator subclass and override the factory method in it.
+
+#### Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.
+Inheritance is probably the easiest way to extend the default behavior of a library or framework. But how would the framework recognize that yout subclass should be used instead of standard component?
+
+The solution is to reduce the code that constructs components across the framework into a single factory method and let anyone override this method in addition to extending the component itself.
 
 ### Why use this?
 * Avoid tight coupling between the creator and the concrete products.
@@ -24,8 +29,8 @@ It's a creational design pattern which provides an interface for creating object
 It's a creational design pattern that lets you produce families of related objects without specifying their concrete classes.
 
 ### Applicability
-* Use the Abstract Factory when your code needs to work with various families of related products, but you don't want it to depend on the concrete classes of those products - they might be unknown beforehand or you simply want to allow for the future extensibility.
-* The Abstract Factory provides you with an interface for creating objects from each class of the product family. As long as your code creates objects via this interface, you don't have to worry about creating the wrong variant of a product which doesn't match the products already created by your app. Consider implementing Abstract Factory when you have a class with a set of Factory Methods that blur its primary responsibility. In a well-designed program each class is responsible only for one thing. When a class deals with multiple product types, it may be worth extracting its factory methods into a stand-alone factory class or a full-blown Abstract Factory implementation.
+#### Use the Abstract Factory when your code needs to work with various families of related products, but you don't want it to depend on the concrete classes of those products - they might be unknown beforehand or you simply want to allow for the future extensibility.
+The Abstract Factory provides you with an interface for creating objects from each class of the product family. As long as your code creates objects via this interface, you don't have to worry about creating the wrong variant of a product which doesn't match the products already created by your app. Consider implementing Abstract Factory when you have a class with a set of Factory Methods that blur its primary responsibility. In a well-designed program each class is responsible only for one thing. When a class deals with multiple product types, it may be worth extracting its factory methods into a stand-alone factory class or a full-blown Abstract Factory implementation.
 
 ### Why use this?
 * You can be sure that the products you're getting from a factory are compatible with each other.
@@ -62,3 +67,16 @@ A builder doesn't expose the unfinished product while running construction steps
 * You can construct objects step-bystep, defer construction steps or run steps recursively.
 * You can reuse the same construction code when building various representations of products.
 * *Single Responsibility Principle*. You can isolate complex construction code from the business logic of the product.
+
+## Adapter
+### Purpose
+It's a structural pattern that allows objects with incompatible interfaces to collaborate.
+
+### Applicability
+#### Use the Adapter class when you want to use some existing class, but its interface isn't compatible with the rest of your code.
+The Adapter pattern lets you create a middle-layer that serves as a translator between your code and a legacy class, a 3rd-party class or any other class with a weird interface.
+
+#### Use the pattern when you want to reuse several existing subclasses that lack some common functionality that can't be added to the superclass.
+You could extend each subclass and put the missing functionality into new child classes. However, you'll need to duplicate the code across all of the new classes, which smells really bad.
+
+The much more elegant solution would be to put the missing functionality into an adapter class. Then you would wrap objects with missing features inside the adapter, gaining needed features dynamically. For this to work, the target classes must have a common interface, and the adapter's field should follow that interface. This approach looks very similar to the Decorator pattern.
