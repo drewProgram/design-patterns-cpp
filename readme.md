@@ -80,3 +80,17 @@ The Adapter pattern lets you create a middle-layer that serves as a translator b
 You could extend each subclass and put the missing functionality into new child classes. However, you'll need to duplicate the code across all of the new classes, which smells really bad.
 
 The much more elegant solution would be to put the missing functionality into an adapter class. Then you would wrap objects with missing features inside the adapter, gaining needed features dynamically. For this to work, the target classes must have a common interface, and the adapter's field should follow that interface. This approach looks very similar to the Decorator pattern.
+
+## Iterator
+### Purpose
+It's a behavioral pattern that lets you traverse elements of a collection withou exposing its underlying representation (list, stack, tree, etc).
+
+### Applicability
+#### Use the Iterator pattern when your collection has a complex data structure under the hood, but you want to hide its complexity from clients (either for convenience or security reasons).
+The iterator encapsulates the details of working with a complex data structures, providing the client with several simple methods of accessing te collection elements. While this approach is very convenient for the client, it also protects the collection from careless or malicious actions which the client would be able to perform if working with the collection directly/
+
+#### Use the pattern to reduce duplication of the traversal code across you app.
+The code of non-trivial iteration algorithms tends to be very bulky. When placed within the business logic of an app, it may blur the responsability of the original code and make it less maintainable. Moving the traversal code to designated iterators can help you make the code of the application more lean and clean.
+
+#### Use the Iterator when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand.
+The pattern provides a couple of generic interfaces for both collections and iterators. Give that your code now uses these interfaces, it'll still work if you pass it various kinds of collections and iterators that implement these interfaces.
