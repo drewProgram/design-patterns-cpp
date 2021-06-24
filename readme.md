@@ -94,3 +94,20 @@ The code of non-trivial iteration algorithms tends to be very bulky. When placed
 
 #### Use the Iterator when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand.
 The pattern provides a couple of generic interfaces for both collections and iterators. Give that your code now uses these interfaces, it'll still work if you pass it various kinds of collections and iterators that implement these interfaces.
+
+## Observer
+### Purpose
+It's a behavioral pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
+
+### Applicability
+#### Use the Observer pattern when changes to the state of one object may require changing other objects, and the actual set of objects is unknown beforehand or changes dynamically.
+You can often experience this problem when working with classes of the graphical user interface. For example, you created custom button classes, and you want to let the clients hook some custom code to your buttons so that it fires whenever a user presses a button.
+
+The Observer pattern lets any object that implements the subscriber interface subscribe for event notifications in publisher objects. You can add the subscription mechanism to your buttons, letting the clients hook up their custom code via custom subscriber classes.
+
+#### Use the pattern when some objects in your app must observe others, but only for a limited time or in specific cases.
+The subscription list is dynamic, so subscribers can join or leave the list whenever they need to.
+
+### Why use this?
+- *Open/Closed Principle*. You can introduce new subscriber classes without having to change the publisher's code (and vice versa if there's a publisher interface).
+- You can establish relations between objects at runtime.
