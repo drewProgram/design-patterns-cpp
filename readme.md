@@ -42,6 +42,8 @@ The solution is to reduce the code that constructs components across the framewo
 * *Single Responsibility Principle*. You can move the product creation code into the place in the program, making the code easier to support.
 * *Open/Closed Principle*. You can introduce new types of products into the program without breaking existing client code.
 
+<a href="#design-patterns">Back to top</a>
+
 ## Abstract Factory
 ### Purpose
 It's a creational design pattern that lets you produce families of related objects without specifying their concrete classes.
@@ -55,6 +57,8 @@ The Abstract Factory provides you with an interface for creating objects from ea
 * You avoid tight coupling between concrete products and client code.
 * *Single Responsibility Principle*. You can extract the product creation code into the place in the program, making the code easier to support.
 * *Open/Closed Principle*. You can introduce new variants of products into the program without breaking existing client code.
+
+<a href="#design-patterns">Back to top</a>
 
 ## Builder
 ### Purpose
@@ -86,6 +90,8 @@ A builder doesn't expose the unfinished product while running construction steps
 * You can reuse the same construction code when building various representations of products.
 * *Single Responsibility Principle*. You can isolate complex construction code from the business logic of the product.
 
+<a href="#design-patterns">Back to top</a>
+
 ## Adapter
 ### Purpose
 It's a structural pattern that allows objects with incompatible interfaces to collaborate.
@@ -98,6 +104,8 @@ The Adapter pattern lets you create a middle-layer that serves as a translator b
 You could extend each subclass and put the missing functionality into new child classes. However, you'll need to duplicate the code across all of the new classes, which smells really bad.
 
 The much more elegant solution would be to put the missing functionality into an adapter class. Then you would wrap objects with missing features inside the adapter, gaining needed features dynamically. For this to work, the target classes must have a common interface, and the adapter's field should follow that interface. This approach looks very similar to the Decorator pattern.
+
+<a href="#design-patterns">Back to top</a>
 
 ## Iterator
 ### Purpose
@@ -112,6 +120,8 @@ The code of non-trivial iteration algorithms tends to be very bulky. When placed
 
 #### Use the Iterator when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand.
 The pattern provides a couple of generic interfaces for both collections and iterators. Give that your code now uses these interfaces, it'll still work if you pass it various kinds of collections and iterators that implement these interfaces.
+
+<a href="#design-patterns">Back to top</a>
 
 ## Observer
 ### Purpose
@@ -129,3 +139,5 @@ The subscription list is dynamic, so subscribers can join or leave the list when
 ### Why use this?
 - *Open/Closed Principle*. You can introduce new subscriber classes without having to change the publisher's code (and vice versa if there's a publisher interface).
 - You can establish relations between objects at runtime.
+
+<a href="#design-patterns">Back to top</a>
