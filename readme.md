@@ -5,6 +5,24 @@ In this repo I'll take notes and develop various design patterns using C++.
 
 The Abstract Factory creates families of objects. E.g.: Related products: Chair, sofa, Coffee Table, but each one can be part of a family like the style, for example furniture with Art Deco, Victorian or Modern styles.
 
+## Shortcuts
+### Creational
+<ul>
+    <a href="#factory"><li>Factory</li></a>
+    <a href="#abstract-factory"><li>Abstract Factory</li></a>
+    <a href="#builder"><li>Builder</li></a>
+</ul>
+
+### Structural
+<ul>
+    <a href="#adapter"><li>Adapter</li></a>
+</ul>
+
+### Behavioral
+<ul>
+    <a href="#iterator"><li>Iterator</li></a>
+    <a href="#observer"><li>Observer</li></a>
+</ul>
 
 ## Factory
 ### Purpose
