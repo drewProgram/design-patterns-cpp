@@ -29,10 +29,10 @@ The Abstract Factory creates families of objects. E.g.: Related products: Chair,
 It's a creational design pattern which provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
 ### Applicability
-#### Use the Factory Method when you don't know beforehand the exact types and dependencies of the objects your code should work with.
+#### :bulb: Use the Factory Method when you don't know beforehand the exact types and dependencies of the objects your code should work with.
 The Factory Method separates product construction code from the code that actually uses the product. Therefore it's easier to extend the product construction code independently from the rest of the code. For example, to add a new product type to the app, you'll only need to create a new creator subclass and override the factory method in it.
 
-#### Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.
+#### :bulb: Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.
 Inheritance is probably the easiest way to extend the default behavior of a library or framework. But how would the framework recognize that yout subclass should be used instead of standard component?
 
 The solution is to reduce the code that constructs components across the framework into a single factory method and let anyone override this method in addition to extending the component itself.
@@ -42,14 +42,14 @@ The solution is to reduce the code that constructs components across the framewo
 * *Single Responsibility Principle*. You can move the product creation code into the place in the program, making the code easier to support.
 * *Open/Closed Principle*. You can introduce new types of products into the program without breaking existing client code.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
 
 ## Abstract Factory
 ### Purpose
 It's a creational design pattern that lets you produce families of related objects without specifying their concrete classes.
 
 ### Applicability
-#### Use the Abstract Factory when your code needs to work with various families of related products, but you don't want it to depend on the concrete classes of those products - they might be unknown beforehand or you simply want to allow for the future extensibility.
+#### :bulb: Use the Abstract Factory when your code needs to work with various families of related products, but you don't want it to depend on the concrete classes of those products - they might be unknown beforehand or you simply want to allow for the future extensibility.
 The Abstract Factory provides you with an interface for creating objects from each class of the product family. As long as your code creates objects via this interface, you don't have to worry about creating the wrong variant of a product which doesn't match the products already created by your app. Consider implementing Abstract Factory when you have a class with a set of Factory Methods that blur its primary responsibility. In a well-designed program each class is responsible only for one thing. When a class deals with multiple product types, it may be worth extracting its factory methods into a stand-alone factory class or a full-blown Abstract Factory implementation.
 
 ### Why use this?
@@ -58,14 +58,14 @@ The Abstract Factory provides you with an interface for creating objects from ea
 * *Single Responsibility Principle*. You can extract the product creation code into the place in the program, making the code easier to support.
 * *Open/Closed Principle*. You can introduce new variants of products into the program without breaking existing client code.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
 
 ## Builder
 ### Purpose
 It's a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
 ### Applicability
-#### Use the Builder pattern to get rid of a "telescopic constructor".
+#### :bulb: Use the Builder pattern to get rid of a "telescopic constructor".
 Say you have a constructor with ten optional parameters. Calling such a beast is very inconvenient; therefore, you overload the constructor and create several shorter versions with fewer parameters. These constructors still refer to the main one, passing some default values into any omitted parameters.
 ```cs
 class Pizza
@@ -80,7 +80,7 @@ class Pizza
 ```
 The Builder pattern lets you build objects step by step, using only those steps that you really need. After implementing the pattern, you don't have to cram dozens of parameters into your constructors anymore.
 
-#### Use the Builder to construct Composite trees or ohter complex objects.
+#### :bulb: Use the Builder to construct Composite trees or ohter complex objects.
 The Builder pattern lets you construct products step-by-step. You could defer execution of some steps without breaking the final product. You can even call steps recursively, which comes in handy when you need to build an object tree.
 
 A builder doesn't expose the unfinished product while running construction steps. This prevents the client code from fetching an incomplete result.
@@ -90,54 +90,54 @@ A builder doesn't expose the unfinished product while running construction steps
 * You can reuse the same construction code when building various representations of products.
 * *Single Responsibility Principle*. You can isolate complex construction code from the business logic of the product.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
 
 ## Adapter
 ### Purpose
 It's a structural pattern that allows objects with incompatible interfaces to collaborate.
 
 ### Applicability
-#### Use the Adapter class when you want to use some existing class, but its interface isn't compatible with the rest of your code.
+#### :bulb: Use the Adapter class when you want to use some existing class, but its interface isn't compatible with the rest of your code.
 The Adapter pattern lets you create a middle-layer that serves as a translator between your code and a legacy class, a 3rd-party class or any other class with a weird interface.
 
-#### Use the pattern when you want to reuse several existing subclasses that lack some common functionality that can't be added to the superclass.
+#### :bulb: Use the pattern when you want to reuse several existing subclasses that lack some common functionality that can't be added to the superclass.
 You could extend each subclass and put the missing functionality into new child classes. However, you'll need to duplicate the code across all of the new classes, which smells really bad.
 
 The much more elegant solution would be to put the missing functionality into an adapter class. Then you would wrap objects with missing features inside the adapter, gaining needed features dynamically. For this to work, the target classes must have a common interface, and the adapter's field should follow that interface. This approach looks very similar to the Decorator pattern.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
 
 ## Iterator
 ### Purpose
 It's a behavioral pattern that lets you traverse elements of a collection withou exposing its underlying representation (list, stack, tree, etc).
 
 ### Applicability
-#### Use the Iterator pattern when your collection has a complex data structure under the hood, but you want to hide its complexity from clients (either for convenience or security reasons).
+#### :bulb: Use the Iterator pattern when your collection has a complex data structure under the hood, but you want to hide its complexity from clients (either for convenience or security reasons).
 The iterator encapsulates the details of working with a complex data structures, providing the client with several simple methods of accessing te collection elements. While this approach is very convenient for the client, it also protects the collection from careless or malicious actions which the client would be able to perform if working with the collection directly/
 
-#### Use the pattern to reduce duplication of the traversal code across you app.
+#### :bulb: Use the pattern to reduce duplication of the traversal code across you app.
 The code of non-trivial iteration algorithms tends to be very bulky. When placed within the business logic of an app, it may blur the responsability of the original code and make it less maintainable. Moving the traversal code to designated iterators can help you make the code of the application more lean and clean.
 
-#### Use the Iterator when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand.
+#### :bulb: Use the Iterator when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand.
 The pattern provides a couple of generic interfaces for both collections and iterators. Give that your code now uses these interfaces, it'll still work if you pass it various kinds of collections and iterators that implement these interfaces.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
 
 ## Observer
 ### Purpose
 It's a behavioral pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
 
 ### Applicability
-#### Use the Observer pattern when changes to the state of one object may require changing other objects, and the actual set of objects is unknown beforehand or changes dynamically.
+#### :bulb: Use the Observer pattern when changes to the state of one object may require changing other objects, and the actual set of objects is unknown beforehand or changes dynamically.
 You can often experience this problem when working with classes of the graphical user interface. For example, you created custom button classes, and you want to let the clients hook some custom code to your buttons so that it fires whenever a user presses a button.
 
 The Observer pattern lets any object that implements the subscriber interface subscribe for event notifications in publisher objects. You can add the subscription mechanism to your buttons, letting the clients hook up their custom code via custom subscriber classes.
 
-#### Use the pattern when some objects in your app must observe others, but only for a limited time or in specific cases.
+#### :bulb: Use the pattern when some objects in your app must observe others, but only for a limited time or in specific cases.
 The subscription list is dynamic, so subscribers can join or leave the list whenever they need to.
 
 ### Why use this?
 - *Open/Closed Principle*. You can introduce new subscriber classes without having to change the publisher's code (and vice versa if there's a publisher interface).
 - You can establish relations between objects at runtime.
 
-<a href="#design-patterns">Back to top</a>
+<a href="#shortcuts">Back to top</a>
